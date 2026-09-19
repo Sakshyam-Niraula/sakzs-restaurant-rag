@@ -5,3 +5,4 @@ faiss-cpu
 numpy
 python-dotenv
 google-genai
+gunicorn
