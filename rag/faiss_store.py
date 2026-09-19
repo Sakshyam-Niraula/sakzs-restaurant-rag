@@ -31,16 +31,22 @@ class FAISSStore:
         """Create a FAISS index from text chunks."""
 
         if not chunks:
-            raise ValueError("Cannot build FAISS index with no chunks.")
+            raise ValueError(
+                "Cannot build FAISS index with no chunks."
+            )
 
-        print("\nGenerating embeddings...")
+        print("\nGenerating Gemini embeddings...")
 
         embedding_model = EmbeddingModel()
-        embeddings = embedding_model.encode(chunks)
+
+        embeddings = embedding_model.encode_documents(
+            chunks
+        )
 
         dimension = embeddings.shape[1]
 
         self.index = faiss.IndexFlatIP(dimension)
+
         self.index.add(embeddings)
 
         self.chunks = chunks
@@ -53,16 +59,26 @@ class FAISSStore:
         """Save FAISS index and chunks to disk."""
 
         if self.index is None:
-            raise RuntimeError("Cannot save an empty FAISS index.")
+            raise RuntimeError(
+                "Cannot save an empty FAISS index."
+            )
 
-        INDEX_DIR.mkdir(parents=True, exist_ok=True)
+        INDEX_DIR.mkdir(
+            parents=True,
+            exist_ok=True
+        )
 
         faiss.write_index(
             self.index,
             str(INDEX_FILE)
         )
 
-        with open(CHUNKS_FILE, "w", encoding="utf-8") as file:
+        with open(
+            CHUNKS_FILE,
+            "w",
+            encoding="utf-8"
+        ) as file:
+
             for chunk in self.chunks:
                 file.write(
                     chunk.replace("\n", " ")
@@ -97,11 +113,14 @@ class FAISSStore:
             "r",
             encoding="utf-8"
         ) as file:
+
             content = file.read()
 
         self.chunks = [
             chunk.strip()
-            for chunk in content.split("---CHUNK---")
+            for chunk in content.split(
+                "---CHUNK---"
+            )
             if chunk.strip()
         ]
 
@@ -115,6 +134,7 @@ class FAISSStore:
         print("\nVector store loaded successfully.")
         print(f"Vectors: {self.index.ntotal}")
         print(f"Chunks : {len(self.chunks)}")
+        print(f"Vector dimension: {self.index.d}")
 
     def search(
         self,
@@ -142,7 +162,10 @@ class FAISSStore:
         )
 
         if query_embedding.ndim == 1:
-            query_embedding = query_embedding.reshape(1, -1)
+            query_embedding = query_embedding.reshape(
+                1,
+                -1
+            )
 
         if query_embedding.shape[1] != self.index.d:
             raise ValueError(
@@ -152,7 +175,10 @@ class FAISSStore:
                 f"Index: {self.index.d}"
             )
 
-        limit = min(top_k, self.index.ntotal)
+        limit = min(
+            top_k,
+            self.index.ntotal
+        )
 
         if limit <= 0:
             return []
@@ -168,6 +194,7 @@ class FAISSStore:
             scores[0],
             indices[0]
         ):
+
             if index == -1:
                 continue
 
@@ -189,9 +216,13 @@ if __name__ == "__main__":
 
     print("\nLoading knowledge base...")
 
-    text = load_document(KNOWLEDGE_BASE)
+    text = load_document(
+        KNOWLEDGE_BASE
+    )
 
-    print(f"Characters loaded: {len(text):,}")
+    print(
+        f"Characters loaded: {len(text):,}"
+    )
 
     print("\nCreating chunks...")
 
@@ -201,12 +232,76 @@ if __name__ == "__main__":
         chunk_overlap=100
     )
 
-    print(f"Chunks created: {len(chunks)}")
+    print(
+        f"Chunks created: {len(chunks)}"
+    )
 
-    store = FAISSStore()
+    # ---------------------------------------------------------
+    # Build a completely new FAISS index using Gemini
+    # embeddings.
+    # ---------------------------------------------------------
 
-    store.build(chunks)
-    store.save()
+    print("\nBuilding new Gemini-powered vector store...")
+
+    embedding_model = EmbeddingModel()
+
+    embeddings = embedding_model.encode_documents(
+        chunks
+    )
+
+    dimension = embeddings.shape[1]
+
+    index = faiss.IndexFlatIP(
+        dimension
+    )
+
+    index.add(
+        embeddings
+    )
+
+    print("\nNew FAISS index created.")
+    print(
+        f"Vectors stored : {index.ntotal}"
+    )
+    print(
+        f"Vector size    : {dimension}"
+    )
+
+    # Save index
+    INDEX_DIR.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    faiss.write_index(
+        index,
+        str(INDEX_FILE)
+    )
+
+    # Save chunks
+    with open(
+        CHUNKS_FILE,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
+        for chunk in chunks:
+            file.write(
+                chunk.replace("\n", " ")
+                + "\n---CHUNK---\n"
+            )
+
+    print("\nVector store saved successfully.")
+    print(
+        f"Index : {INDEX_FILE}"
+    )
+    print(
+        f"Chunks: {CHUNKS_FILE}"
+    )
+
+    # ---------------------------------------------------------
+    # Retrieval test
+    # ---------------------------------------------------------
 
     print("\n" + "=" * 60)
     print("RETRIEVAL TEST")
@@ -218,29 +313,51 @@ if __name__ == "__main__":
         "Do you accept eSewa?"
     ]
 
-    embedding_model = EmbeddingModel()
-
     for question in test_questions:
 
         print("\n" + "-" * 60)
-        print(f"QUESTION: {question}")
+        print(
+            f"QUESTION: {question}"
+        )
         print("-" * 60)
 
-        query_embedding = embedding_model.encode(
-            [question]
+        query_embedding = embedding_model.encode_query(
+            question
         )
 
-        results = store.search(
-            query_embedding[0],
-            top_k=3
+        query_embedding = query_embedding.reshape(
+            1,
+            -1
         )
 
-        for number, result in enumerate(
-            results,
+        scores, indices = index.search(
+            query_embedding,
+            TOP_K
+        )
+
+        for number, (score, chunk_index) in enumerate(
+            zip(
+                scores[0],
+                indices[0]
+            ),
             start=1
         ):
-            print(f"\nResult {number}")
+
+            if chunk_index == -1:
+                continue
+
             print(
-                f"Similarity: {result['score']:.4f}"
+                f"\nResult {number}"
             )
-            print(result["chunk"])
+
+            print(
+                f"Similarity: {score:.4f}"
+            )
+
+            print(
+                chunks[chunk_index]
+            )
+
+    print("\n" + "=" * 60)
+    print("FAISS VECTOR STORE BUILD COMPLETED")
+    print("=" * 60)

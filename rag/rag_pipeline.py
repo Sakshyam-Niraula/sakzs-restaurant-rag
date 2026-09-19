@@ -65,10 +65,10 @@ class RAGPipeline:
         print("RAG pipeline initialized successfully.")
 
     def retrieve(self, question: str, top_k: int = TOP_K) -> List[Dict]:
-        question_embedding = self.embedding_model.encode([question])
+        question_embedding = self.embedding_model.encode_query(question)
 
         results = self.vector_store.search(
-            question_embedding[0],
+            question_embedding,
             top_k=top_k
         )
 
