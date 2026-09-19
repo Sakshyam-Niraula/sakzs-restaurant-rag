@@ -1,0 +1,243 @@
+SAKZ'S RESTAURANT
+Official Restaurant Knowledge Base
+Version: 1.0
+
+1. RESTAURANT OVERVIEW
+
+
+Sakz's Restaurant is a fictional casual dining restaurant offering
+Nepali, Indian, and international-inspired dishes. The restaurant
+provides dine-in, takeaway, and delivery services.
+
+The restaurant focuses on fresh food, comfortable dining, and
+friendly service.
+
+2. MENU AND PRICES
+
+
+STARTERS
+
+Vegetable Samosa - NPR 180
+Chicken Samosa - NPR 240
+French Fries - NPR 220
+Chicken Wings - NPR 380
+Paneer Chilli - NPR 350
+Garlic Bread - NPR 250
+
+MAIN COURSES
+
+Chicken Momo - NPR 320
+Vegetable Momo - NPR 260
+Chicken Chowmein - NPR 340
+Vegetable Chowmein - NPR 280
+Chicken Biryani - NPR 450
+Vegetable Biryani - NPR 350
+Butter Chicken with Rice - NPR 520
+Paneer Butter Masala with Naan - NPR 480
+Dal Bhat Set - NPR 450
+
+PIZZA
+
+Margherita Pizza - NPR 450
+Chicken Pizza - NPR 550
+Vegetable Pizza - NPR 500
+Sakz's Special Pizza - NPR 650
+
+BURGERS
+
+Classic Chicken Burger - NPR 420
+Crispy Chicken Burger - NPR 450
+Vegetable Burger - NPR 380
+
+DESSERTS
+
+Chocolate Brownie - NPR 280
+New York Cheesecake - NPR 320
+Ice Cream - NPR 180
+
+BEVERAGES
+
+Coca-Cola - NPR 100
+Sprite - NPR 100
+Fresh Lemonade - NPR 180
+Iced Tea - NPR 180
+Milkshake - NPR 280
+Mineral Water - NPR 50
+Espresso - NPR 180
+Cappuccino - NPR 220
+
+
+3. OPENING HOURS
+
+
+Monday: 10:00 AM - 10:00 PM
+Tuesday: 10:00 AM - 10:00 PM
+Wednesday: 10:00 AM - 10:00 PM
+Thursday: 10:00 AM - 10:00 PM
+Friday: 10:00 AM - 10:30 PM
+Saturday: 10:00 AM - 11:00 PM
+Sunday: 11:00 AM - 9:00 PM
+
+The kitchen closes 30 minutes before the restaurant closes.
+
+4. LOCATION AND CONTACT
+
+
+Address:
+Sakz's Restaurant
+Durbar Marg
+Kathmandu, Nepal
+
+Phone:
++977-1-5550123
+
+Email:
+hello@sakzsrestaurant.example
+
+The restaurant is located near the main Durbar Marg shopping area.
+
+5. DELIVERY
+
+
+Sakz's Restaurant provides food delivery within selected areas
+of Kathmandu.
+
+Delivery hours:
+11:00 AM - 9:30 PM
+
+A standard delivery fee of NPR 100 applies to orders within the
+regular delivery area.
+
+Orders above NPR 2,000 receive free delivery within the regular
+delivery area.
+
+Delivery availability depends on the customer's location.
+
+The restaurant does not currently provide delivery outside
+Kathmandu.
+
+
+6. RESERVATION POLICY
+
+
+Customers can make reservations by phone or email.
+
+Reservations are recommended for groups of 6 or more people.
+
+A reservation should normally be made at least 2 hours before
+the requested dining time.
+
+The restaurant holds a reserved table for 15 minutes after the
+reservation time.
+
+For groups of 10 or more people, customers should contact the
+restaurant in advance.
+
+
+7. PAYMENT METHODS
+
+Sakz's Restaurant accepts:
+
+- Cash
+- Visa
+- Mastercard
+- eSewa
+- Khalti
+- Bank QR payments
+
+Payment is made after the meal for dine-in customers.
+
+Online delivery orders must be paid before the order is prepared.
+
+8. CURRENT OFFERS
+
+WEEKDAY LUNCH OFFER
+
+Monday to Friday, 11:00 AM - 2:00 PM
+
+Customers receive 10% off selected main-course meals.
+
+FAMILY COMBO
+
+A family combo includes:
+- 2 large pizzas
+- 1 portion of French fries
+- 4 soft drinks
+
+Family Combo Price: NPR 1,650
+
+The family combo is available every day while supplies last.
+
+STUDENT OFFER
+
+Students receive 10% off selected food items from Monday to
+Thursday between 11:00 AM and 5:00 PM.
+
+A valid student ID is required.
+
+Offers cannot be combined with other discounts.
+
+
+9. FAQ
+
+
+Q: Does Sakz's Restaurant offer vegetarian food?
+
+A: Yes. Sakz's Restaurant offers several vegetarian dishes,
+including vegetable momo, vegetable chowmein, vegetable biryani,
+paneer butter masala, vegetable pizza, and vegetable burger.
+
+Q: Does the restaurant offer delivery?
+
+A: Yes. Delivery is available within selected areas of Kathmandu.
+
+Q: Can I reserve a table?
+
+A: Yes. Reservations can be made by phone or email.
+
+Q: Do you accept digital payments?
+
+A: Yes. The restaurant accepts eSewa, Khalti, and bank QR payments,
+as well as Visa and Mastercard.
+
+Q: Is there a student discount?
+
+A: Yes. Students receive 10% off selected food items from Monday
+to Thursday between 11:00 AM and 5:00 PM with a valid student ID.
+
+Q: What time does the kitchen close?
+
+A: The kitchen closes 30 minutes before the restaurant's stated
+closing time.
+
+Q: Can I order delivery outside Kathmandu?
+
+A: No. The restaurant currently provides delivery only within
+selected areas of Kathmandu.
+
+
+10. INFORMATION NOT PROVIDED
+
+
+The knowledge base does not currently contain information about:
+
+- Swimming pools
+- Hotel rooms
+- Catering services
+- Pet policies
+- Parking availability
+- Wi-Fi availability
+- Accessibility facilities
+- Nutritional information
+- Food allergens
+- Specific ingredients of individual dishes
+- Franchise locations
+- Employment opportunities
+
+If a customer asks about information that is not contained in
+this knowledge base, the chatbot must clearly state that the
+information is not available in the Sakz's Restaurant knowledge
+base.
+
+The chatbot must never invent restaurant policies, prices,
+services, ingredients, opening hours, or other information.

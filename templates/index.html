@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sakz's Restaurant AI — Your intelligent restaurant assistant."
+    >
+
+    <title>Sakz's Restaurant — AI Assistant</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ========================================= -->
+        <!-- SIDEBAR -->
+        <!-- ========================================= -->
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    S
+                </div>
+
+                <div class="brand-text">
+                    <h1>Sakz's</h1>
+                    <span>RESTAURANT</span>
+                </div>
+
+            </div>
+
+
+            <button
+                class="new-chat-btn"
+                id="newChatBtn"
+            >
+                <span class="new-chat-icon">＋</span>
+                <span>New Chat</span>
+            </button>
+
+
+            <div class="sidebar-section">
+
+                <div class="section-label">
+                    RECENT
+                </div>
+
+                <div
+                    class="conversation-list"
+                    id="conversationList"
+                >
+
+                    <div class="empty-conversations">
+                        No conversations yet
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <div class="restaurant-info">
+
+                    <div class="status-dot"></div>
+
+                    <div>
+                        <strong>Sakz's AI</strong>
+                        <span>Online & ready</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ========================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ========================================= -->
+
+        <main class="main">
+
+            <!-- HEADER -->
+
+            <header class="topbar">
+
+                <div class="mobile-brand">
+
+                    <div class="brand-mark small">
+                        S
+                    </div>
+
+                    <span>Sakz's Restaurant</span>
+
+                </div>
+
+
+                <div class="topbar-right">
+
+                    <div class="connection-status">
+
+                        <span class="status-dot"></span>
+
+                        <span>AI Online</span>
+
+                    </div>
+
+
+                    <button
+                        class="icon-btn"
+                        id="themeToggle"
+                        aria-label="Toggle dark mode"
+                        title="Toggle theme"
+                    >
+                        <span id="themeIcon">☾</span>
+                    </button>
+
+
+                    <button
+                        class="icon-btn mobile-menu-btn"
+                        id="mobileMenuBtn"
+                        aria-label="Open menu"
+                    >
+                        ☰
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- CHAT AREA -->
+
+            <section
+                class="chat-area"
+                id="chatArea"
+            >
+
+                <!-- WELCOME SCREEN -->
+
+                <div
+                    class="welcome-screen"
+                    id="welcomeScreen"
+                >
+
+                    <div class="welcome-icon">
+                        ✦
+                    </div>
+
+                    <div class="welcome-badge">
+                        SAKZ'S RESTAURANT AI
+                    </div>
+
+                    <h2>
+                        What can I help<br>
+                        you discover?
+                    </h2>
+
+                    <p>
+                        Ask me about our menu, opening hours,
+                        delivery, reservations, payments and offers.
+                    </p>
+
+
+                    <div class="suggestion-grid">
+
+                        <button
+                            class="suggestion-card"
+                            data-question="What is on the menu?"
+                        >
+                            <span class="suggestion-icon">🍽️</span>
+
+                            <span>
+                                <strong>Explore the menu</strong>
+                                <small>See our dishes & prices</small>
+                            </span>
+
+                            <span class="arrow">→</span>
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-question="What are your opening hours?"
+                        >
+                            <span class="suggestion-icon">🕐</span>
+
+                            <span>
+                                <strong>Opening hours</strong>
+                                <small>When are you open?</small>
+                            </span>
+
+                            <span class="arrow">→</span>
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-question="Do you offer delivery?"
+                        >
+                            <span class="suggestion-icon">🚚</span>
+
+                            <span>
+                                <strong>Delivery</strong>
+                                <small>Delivery areas & pricing</small>
+                            </span>
+
+                            <span class="arrow">→</span>
+                        </button>
+
+
+                        <button
+                            class="suggestion-card"
+                            data-question="How can I make a reservation?"
+                        >
+                            <span class="suggestion-icon">📅</span>
+
+                            <span>
+                                <strong>Reservations</strong>
+                                <small>Book a table</small>
+                            </span>
+
+                            <span class="arrow">→</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MESSAGES -->
+
+                <div
+                    class="messages"
+                    id="messages"
+                ></div>
+
+            </section>
+
+
+            <!-- INPUT AREA -->
+
+            <div class="input-wrapper">
+
+                <div class="input-container">
+
+                    <textarea
+                        id="messageInput"
+                        rows="1"
+                        maxlength="500"
+                        placeholder="Ask Sakz's AI anything..."
+                        aria-label="Message"
+                    ></textarea>
+
+
+                    <button
+                        class="send-btn"
+                        id="sendBtn"
+                        aria-label="Send message"
+                        title="Send message"
+                    >
+                        <span>↑</span>
+                    </button>
+
+                </div>
+
+
+                <div class="input-footer">
+
+                    <span>
+                        Sakz's AI answers using the restaurant
+                        knowledge base.
+                    </span>
+
+                    <span id="characterCount">
+                        0 / 500
+                    </span>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- MOBILE OVERLAY -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+</body>
+</html>
