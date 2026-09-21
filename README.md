@@ -56,10 +56,11 @@ The language model is not allowed to answer from general knowledge. It receives 
 - Python
 - Flask
 - PyMuPDF
-- Sentence Transformers
 - FAISS
+- NumPy
 - Google Gemini API
 - python-dotenv
+- Gunicorn
 
 ### Frontend
 
@@ -69,11 +70,22 @@ The language model is not allowed to answer from general knowledge. It receives 
 
 ### Embedding Model
 
-`all-MiniLM-L6-v2`
+`gemini-embedding-001`
+
+The project uses Google's Gemini Embedding API to convert both
+knowledge-base chunks and user queries into numerical vectors.
+
+Document chunks use the `RETRIEVAL_DOCUMENT` task type, while user
+questions use the `RETRIEVAL_QUERY` task type.
+
+The resulting embeddings use 768 dimensions in the project's FAISS
 
 ### Vector Database
 
-FAISS using normalized embeddings and inner-product similarity search.
+FAISS using inner-product similarity search.
+
+The current vector store contains 12 knowledge-base chunks represented
+as 768-dimensional vectors.
 
 ### Language Model
 
@@ -83,7 +95,6 @@ Google Gemini API using the configured Gemini model.
 
 ## 4. Project Structure
 
-```text
 sakzs-restaurant-rag/
 │
 ├── app.py
@@ -109,6 +120,9 @@ sakzs-restaurant-rag/
 ├── templates/
 │   └── index.html
 │
-└── static/
-    ├── style.css
-    └── script.js
+├── static/
+│   ├── style.css
+│   └── script.js
+│
+└── tests/
+    └── test_questions.md
